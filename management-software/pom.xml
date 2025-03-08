@@ -1,17 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- This is the main Maven Project Object Model (POM) file for our management-software project -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Model version for Maven POM -->
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Inherit from Spring Boot's parent POM to leverage its dependency management and auto-configuration -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.1</version> <!-- Ensure this version supports Java 17 -->
+        <relativePath/> <!-- Allows Maven to locate the parent POM from the repository -->
+    </parent>
+
+    <!-- Project coordinates -->
     <groupId>org.example</groupId>
     <artifactId>management-software</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- Define project properties for compiler version and encoding -->
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>17</java.version> <!-- Specify Java 17 as the target version -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <!-- Dependencies required for the Spring Boot application -->
+    <dependencies>
+        <!-- Spring Boot Starter Web for building RESTful web services -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Starter Data JPA for database interactions and ORM support -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- H2 Database for in-memory database support during development and testing -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Spring Boot Starter Test to support unit and integration testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Lombok to reduce boilerplate code in Java classes (optional) -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <!-- Build configuration for packaging and running the application -->
+    <build>
+        <plugins>
+            <!-- Spring Boot Maven Plugin allows us to package the application as an executable JAR -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
