@@ -1,5 +1,5 @@
 // REST API controllers
-package com.managementsoftware.controller;
+package com.managementsoftware;
 
 import com.managementsoftware.Item;
 import com.managementsoftware.ItemService;
